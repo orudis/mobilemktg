@@ -1,5 +1,4 @@
-//Heroku dynamically assigns your app a port, so you can't set the port to a fixed number. 
-//Heroku adds the port to the env, so we can pull it from there
+// adds the port to the env, so we can pull it from there
 var port     = process.env.PORT || 3000;
 // set up ======================================================================
 // get all requires
@@ -26,7 +25,6 @@ var app      = express();
 require('./controllers/auth')(passport); // pass passport for configuration
 
 // set up our express application
-//app.use(logger); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.urlencoded({extended: true,limit: '5mb'}));
@@ -56,49 +54,6 @@ var limits={
             }
             
 var upload = multer({ storage : storage, limits:limits}).any();
-
-
-// land page for triger qr
-app.get('/geoip', function(req, res) {
-    var geoip = require('geoip-lite');
-    var ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-    console.log("ip:"+ip);
-    var ip = "147.84.144.13";
-     var geo = geoip.lookup(ip);
-    //geo:{"range":[2471755776,2471806719],"country":"ES","region":"31","city":"Murcia","ll":[37.987,-1.13],"metro":0}
-    
-    var ht={texto:'<h1>localizacion:'+geo.city+'</h1>'};
-    console.log('LOCALIZACION:'+JSON.stringify(geo));
-    res.render('index',ht);
-});
-
-app.get('/browser', function(req, res) {
-  var MobileDetect = require('mobile-detect')
-  var  md = new MobileDetect(req.headers['user-agent']);
-  
-  var md = new MobileDetect(window.navigator.userAgent);
-   
-    console.log( md.mobile() );          // 'Sony' 
-    console.log( md.phone() );           // 'Sony' 
-    console.log( md.tablet() );          // null 
-    console.log( md.userAgent() );       // 'Safari' 
-    console.log( md.os() );              // 'AndroidOS' 
-    console.log( md.is('iPhone') );      // false 
-    console.log( md.is('bot') );         // false 
-    console.log( md.version('Webkit') );         // 534.3 
-    console.log( md.versionStr('Build') );       // '4.1.A.0.562' 
-    console.log( md.match('playstation|xbox') );
-    res.render('index');
-});
-
-var ht={html:'<h1>HOLA</H1>'};
-// land page for triger qr
-app.get('/template', function(req, res) {
-    //var id_site = req.params.id_site;
-    console.log("template");
-    res.render('index_mobile',ht);
-});
-
 
 
 //******************************
@@ -163,18 +118,10 @@ app.get('/qr-svg/:code', function(req, res) {
   var code = qr.image(config.server+'/q/'+req.params.code, { type: 'svg' });
     res.type('svg');
   code.pipe(res);
-  
- // var code = qr.svgObject(config.server+'/q/'+req.params.code, { type: 'svg' });
- // res.setHeader('Content-Type', 'application/json');
- //   res.send(JSON.stringify(code));
-  
-  
-
 });
 
 app.get('/qr-png/:code', function(req, res) { 
   var code = qr.image(config.server+'/q/'+req.params.code, { type: 'png' });
-  
   res.type('png');
   code.pipe(res);
 });
@@ -187,7 +134,6 @@ app.get('/qr-png-dw/:code', function(req, res) {
   code.pipe(res);
 });
 
-
 app.get('/qr-svg-custom/:id_code', function(req, res) { 
   //var code = qr.image(req.params.code, { type: 'png' });
     campaign.findById({id_campaign:req.params.id_code,id_user:req.user.id}, function(err, data) {
@@ -195,9 +141,7 @@ app.get('/qr-svg-custom/:id_code', function(req, res) {
     res.setHeader('Content-disposition', 'attachment; filename=' + 'QR_campaña_'+data.name+'.svg');
     res.setHeader('Content-type', 'image/svg');
     res.type('svg');
-   //code.pipe(res);
-
-   res.send(data.custom_qr_svg);
+    res.send(data.custom_qr_svg);
   });
   
 });
@@ -205,41 +149,24 @@ app.get('/qr-svg-custom/:id_code', function(req, res) {
 app.get('/qr-png-custom/:id_code', function(req, res) { 
   //var code = qr.image(req.params.code, { type: 'png' });
     campaign.findById({id_campaign:req.params.id_code,id_user:req.user.id}, function(err, data) {
-    if (err) {
-        console.log("ERROR 1"+err);
-        return;
-    }
-   
-        
-    //var  svg2png=require('svg2png');   
-        
-    //var outputBuffer = svg2png.sync(data.custom_qr,{width:'600',height:'600'}); 
-    var gm = require('gm');
-        
-        /*gm(data.custom_qr,'img.svg').toBuffer('PNG',function (err, buffer) {
-          if (err) {
-              console.log("ERROR 2"+err);
-              return;
-          }
-          console.log('done!');
-          res.setHeader('Content-disposition', 'attachment; filename=' + 'QR_campaña_'+data.name+'.png');
-          res.setHeader('Content-type', 'image/png');
-          res.type('png');
-          res.send(buffer); 
-        })*/
-        console.log("custom_qr:"+data.custom_qr);
-        var buf = new Buffer(data.custom_qr);
-        res.setHeader('Content-disposition', 'attachment; filename=' + 'QR_campaña_'+data.name+'.png');
-        res.setHeader('Content-type', 'image/png');
-        gm(buf, 'svg.svg').stream('png', function (err, stdout, stderr) {
-          if (err) {
-              console.log("ERROR 2"+stderr);
-              return;
-          }
-          stdout.pipe(res);
-        });
-
-    
+      if (err) {
+          console.log("ERROR 1"+err);
+          return;
+      }
+     
+  
+      var gm = require('gm');
+  
+      var buf = new Buffer(data.custom_qr);
+      res.setHeader('Content-disposition', 'attachment; filename=' + 'QR_campaña_'+data.name+'.png');
+      res.setHeader('Content-type', 'image/png');
+      gm(buf, 'svg.svg').stream('png', function (err, stdout, stderr) {
+        if (err) {
+                console.log("ERROR 2"+stderr);
+                return;
+        }
+        stdout.pipe(res);
+      });
     });       
 });
 
