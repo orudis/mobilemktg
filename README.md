@@ -2,7 +2,7 @@
 
 Application for mobile marketing using QR codes. 
 
-This application has been developed as final project for graduation in Computer Engineering for the International University of Rioja UNITE
+This application has been developed as final project for graduation in Computer Engineering for the International University of Rioja UNIR
 
 
 
