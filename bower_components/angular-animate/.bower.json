@@ -1,0 +1,18 @@
+{
+  "name": "angular-animate",
+  "version": "1.2.22",
+  "main": "./angular-animate.js",
+  "dependencies": {
+    "angular": "1.2.22-build.361+sha.bcfa64e"
+  },
+  "homepage": "https://github.com/educarm/angular-animate",
+  "_release": "1.2.22",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.22",
+    "commit": "18debffd49a7e3928b2407f0da8c706661bbea15"
+  },
+  "_source": "git://github.com/educarm/angular-animate.git",
+  "_target": "v1.2.22",
+  "_originalSource": "educarm/angular-animate"
+}

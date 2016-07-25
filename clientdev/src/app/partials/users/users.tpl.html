@@ -1,0 +1,88 @@
+
+<div ng-show="!(adding || editing)" class="row">
+    <div ng-show="!(adding || editing)" class="row">
+        <div ng-include src="'app/layout/navbar/navbar.tpl.html'"></div>
+    </div>
+</div>
+
+<div ng-show="!(adding || editing)" class="row  home-row-top">
+    <div class="col-md-12">
+        <!--Table Wrapper Start-->
+        <div class="table-responsive ls-table">
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.description}}</td>
+                        <td>
+                            <button ng-click="onAction('edit',user.id)" class="btn btn-xs btn-info" style="margin:3px" tooltip="Editar campaña"><i class="fa fa-pencil"></i></button>
+                            <button ng-click="onAction('delete',user.id)" class="btn btn-xs ls-red-btn" style="margin:3px" tooltip="Eliminar campaña"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> 
+                            <div  ng-click="onAction('new')" class="btn btn-primary"><i class="fa fa-plus">  Añadir Usuario</i></div>
+                        </td>
+                    </tr>
+                
+              </tbody>
+
+            </table>
+        </div>
+        <!--Table Wrapper Finish-->
+    </div>
+</div>
+
+<!-- overlay form user -->
+<div class="row" ng-show="adding || editing">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+                <div class="panel-heading" >
+                        <h4>Usuario</h4>	
+                </div>
+                <div class="panel-body " >
+                       <form name="formUser" novalidate >
+                                <h4>{{message}}</h4>								
+                                <div class="form-group col-md-3">
+                                        <label for="user.id" class="ng-binding" style="align:left">
+                                                Id
+                                        </label>
+                                        <input type="text" class="form-control" id="user.id" name="user.id"ng-model="user.id" placeholder=""  ng-required="false" ng-disabled="true">	   
+                                </div>
+                                <div class="form-group col-md-6">
+                                       <label for="user.email" class="ng-binding" style="align:left">
+                                                Email  *
+                                        </label>
+                                        <input type="text" class="form-control" id="user.email" name="user.email"ng-model="user.email" placeholder=""  ng-required="true" ng-disabled="false">	   
+                                </div>
+                                <div class="form-group col-md-6">
+                                       <label for="user.description" class="ng-binding" style="align:left">
+                                                Descripcion
+                                        </label>
+                                        <input type="text" class="form-control" id="user.description" name="user.description"ng-model="user.description" placeholder=""  ng-required="false" ng-disabled="false">	   
+                                </div>
+                        </form>
+                </div>
+                <div class="panel-footer" >
+                       <div class="row">
+                                <div class="col-md-offset-3 col-md-9">  
+                                        <button ng-click="save()" ng-disabled="formUser.$invalid"  class="btn btn-sm btn-primary" >Aceptar</button> 
+                                        <button ng-click="cancel()" class="btn btn-sm">Cancelar</button> 
+                                </div> 
+                        </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,18 @@
+{
+  "name": "angular-touch",
+  "version": "1.2.22",
+  "main": "./angular-touch.js",
+  "dependencies": {
+    "angular": "1.2.22-build.361+sha.bcfa64e"
+  },
+  "homepage": "https://github.com/educarm/angular-touch",
+  "_release": "1.2.22",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.22",
+    "commit": "bf10ad6fe0181ec74fccf0fe3b0ab763bc614881"
+  },
+  "_source": "git://github.com/educarm/angular-touch.git",
+  "_target": "v1.2.22",
+  "_originalSource": "educarm/angular-touch"
+}

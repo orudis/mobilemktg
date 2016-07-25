@@ -1,0 +1,98 @@
+
+<div ng-show="!(adding || editing)" class="row">
+    <div ng-include src="'app/layout/navbar/navbar.tpl.html'"></div>
+</div>
+
+<div ng-show="!(adding || editing)" class="row home-row-top">
+    <div class="col-md-12">
+        <!--Table Wrapper Start-->
+        <div class="table-responsive ls-table">
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th>QR</th>
+                    <th>Id</th>
+                    <th>Campaña</th>
+                    <th>Descripcion</th>
+                    
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="campaign in campaigns">
+                        <td><img src="/qr-png/{{campaign.id}}" alt="QR code" height="50" width="50"></td>
+                        <td>{{campaign.id}}</td>
+                        <td>{{campaign.name}}</td>
+                        <td>{{campaign.description}}</td>
+                        
+                        <td><span class="label label-success">Activa</span></td>
+                        <td>
+                            <button ng-click="onAction('edit',campaign.id)" class="btn btn-xs btn-info" style="margin:3px" tooltip="Editar campaña"><i class="fa fa-pencil"></i></button>
+                            <button ng-click="onAction('qr',campaign.id)" class="btn btn-xs btn-info" style="margin:3px" tooltip="Editar codigo QR"><i class="fa fa-qrcode"></i></button>
+                            <button class="btn btn-xs btn-info" style="margin:3px" tooltip="Descargar codigo QR"><a target="_self" href="/qr-png-dw/{{campaign.id}}"><i class="fa fa-download"></i></a></button>
+                            <button ng-click="onAction('editweb',campaign.id)" class="btn btn-xs ls-red-btn" style="margin:3px" tooltip="Editar web"><i class="fa fa-tint"></i></button>
+                            <button ng-click="onAction('statistics',campaign.id)" class="btn btn-xs ls-red-btn" style="margin:3px" tooltip="Estadísticas"><i class="fa fa-bar-chart"></i></button>
+                            <button ng-click="onAction('delete',campaign.id)" class="btn btn-xs ls-red-btn" style="margin:3px" tooltip="Eliminar campaña"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr ng-show="!adding">
+                        <td colspan="7"> 
+                            <div  ng-click="onAction('new')" class="btn btn-primary"><i class="fa fa-plus">  Añadir campañaña</i></div>
+                        </td>
+                    </tr>
+              </tbody>
+            </table>
+        </div>
+        <!--Table Wrapper Finish-->
+    </div>
+</div>     
+
+<!-- overlay form campaign -->
+<div class="row" ng-show="adding || editing">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading" >
+                <h4>Campaña</h4>	
+            </div>
+            <div class="panel-body " >
+                <form name="formCampaing" novalidate >
+                        <h4>{{message}}</h4>								
+                        <div class="form-group col-md-3">
+                            <label for="campaign.id" class="ng-binding" style="align:left">
+                                    Id
+                            </label>
+                            <input type="text" class="form-control" id="campaign.id" name="campaign.id"ng-model="campaign.id" placeholder=""  ng-required="false" ng-disabled="true">	   
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="campaign.name" class="ng-binding" style="align:left">
+                                Nombre *
+                            </label>
+                            <input type="text" class="form-control" id="campaign.name" name="campaign.name"ng-model="campaign.name" placeholder=""  ng-required="true" ng-disabled="false">	   
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="campaign.description" class="ng-binding" style="align:left">
+                                Descripcion
+                            </label>
+                            <input type="text" class="form-control" id="campaign.description" name="campaign.description"ng-model="campaign.description" placeholder=""  ng-required="false" ng-disabled="false">	   
+                        </div>
+                </form>
+            </div>
+            <div class="panel-footer" >
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">  
+                        <button ng-click="save()" ng-disabled="formCampaing.$invalid"  class="btn btn-sm btn-primary" >Aceptar</button> 
+                        <button ng-click="cancel()" class="btn btn-sm">Cancelar</button> 
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- overlay end  --->
+
+
+  
+	
+	
+

@@ -1,0 +1,186 @@
+<style>
+    canvas{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #333;
+    
+  }
+</style>
+
+<div ng-show="!(adding || editing)" class="row">
+    <div ng-include src="'app/layout/navbar/navbar.tpl.html'"></div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert alert-info" style="text-align:center"> <strong>Campaña:</strong>  {{campaign.name}}</div>
+    </div>
+</div>
+
+
+<div class="container" id="page-notas">
+    <style>
+        #grid-snap {
+		  width: 40%;
+		  background-color: #29e;
+		  color: #fff;
+		  font-size: 1.2em;
+		  border-radius: 4px;
+		  padding: 2%;
+		  margin: 5%;
+		}    
+    </style>
+    
+    
+	<div class="row">
+		
+    <div id="content">
+         <div id="content-header">
+            
+            
+           <!-- <img src="/qr-png/{{id_campaign}}" alt="QR code" height="350" width="350"></td>-->
+         </div>
+         
+         <div class="container-fluid">
+            <div class="row-fluid">
+               <div class="alert alert-warning"> <strong>Scanee el código QR antes de publicardo:</strong> utilice diferentes dispositivos para comprobar que es leido correctamente.</div>
+               <div class="btn-toolbar">
+                  <div class="btn-group">
+                     <button class="btn btn-warning" data-toggle="dropdown">Descargar...</button> <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> </button>
+                     <ul class="dropdown-menu">
+                        <li> <a id="btn_canvas_to_png" ng-click="qrPngCustom()"><i class="icon-arrow-down icon-white"></i> PNG (raster)</a></li>
+                        <!--<li> <a id="btn_canvas_to_png"  href="/qr-png-custom/{{campaign.id}}"><i class="icon-arrow-down icon-white"></i> PNG (raster)</a></li>-->
+                        <li> <a id="btn_canvas_to_jpg"  ng-click="qrJpgCustom()"><i class="icon-arrow-down icon-white"></i> JPG (raster)</a></li>
+                        <li class="divider"></li>
+                        <li> <a id="btn_canvas_to_svg"  href="/qr-svg-custom/{{campaign.id}}"><i class="icon-arrow-down icon-white"></i> SVG (vector)</a></li>
+                        <!--
+                        <li> <a id="btn_canvas_to_pdf"><i class="icon-arrow-down icon-white"></i> PDF (vector)</a></li>
+                        <li> <a href="/backstage/downloadEPSQR?qr_codes_ids=310524"><i class="icon-arrow-down icon-white"></i> EPS (blanco y negro)</a></li>
+                        -->
+                     </ul>
+                  </div>
+               </div>
+                <br>
+               <div class="row pull-leftss">
+                  <div class="col-md-3 well sidebar-nav clearfixxx">
+                      
+                      <!-- Canvas -->
+                     <fieldset>
+                         <div class="form-inline row-spaced"></div>
+
+                         <h4>Propiedades canvas</h4>
+
+                          <label for="canvasBgColor" class="ng-binding">Color fondo {{canvasBgColor}}</label>
+                          <div class="minicolors minicolors-theme-bootstrap minicolors-position-bottom minicolors-position-left minicolors-focus">
+                              <input minicolors="" id="canvasBgColor" class="form-control minicolors-input" type="text" ng-model="canvasBgColor" ng-change="onChangeCanvasBgColor(canvasBgColor)" size="7">
+
+                          </div>
+
+                         <br>
+                         <label for="canvas_width" class="inline-label">
+                            Ancho (px)
+                          </label> 
+                          <div class="input-group">
+                              <input  ng-model="canvasWidth"  id="canvas_width" type="text" class="form-control">
+                              <span class="input-group-addon" id="basic-addon2"><span class="fa fa-arrows-h" tooltip="Estás dimensiones en pixeles."></span></span>
+                          </div>
+
+                          <br>
+                         <label for="canvas_height" class="inline-label">
+                                 Alto (px)
+                          </label> 
+                          <div class="input-group">
+                              <input  ng-model="canvasHeight"  id="canvas_height" type="text" class="form-control">
+                              <span class="input-group-addon" id="canvas_height"><span class="fa fa-arrows-h" tooltip="Estás dimensiones en pixeles."></span></span>
+                          </div>
+                        
+                      </fieldset>
+                      <br>
+                      
+                      <!-- Canvas -->
+                      <fieldset>
+                        <div class="row-spaced">
+                            <h4>Propiedades código QR</h4>
+                           
+                           <label for="qrFrColor" class="ng-binding">Color código QR</label>
+                            <div class="minicolors minicolors-theme-bootstrap minicolors-position-bottom minicolors-position-right minicolors-focus">
+                                  <input minicolors="" id="canvasBgColor" class="form-control minicolors-input" type="text" ng-model="qrFrColor" ng-change="onChangeQrFrColor(qrFrColor)" size="7">
+                            </div> 
+                            
+                            <br>
+                          
+                            <label for="qrBgColor" class="ng-binding">Color fondo código QR</label>
+                            <div class="minicolors minicolors-theme-bootstrap minicolors-position-bottom minicolors-position-right minicolors-focus">
+                                      <input minicolors="" id="qrBgColor" class="form-control minicolors-input" type="text" ng-model="qrBgColor" ng-change="onChangeQrBgColor(qrBgColor)" size="7">
+                            </div> 
+                            
+                            
+                            <br>
+                            <div class="row-spaced-no-border"> 
+                             <label for="qr_code_background_image" class="inline-label">
+                                 Imagen fondo
+                             </label> 
+                             <br/> 
+                             <!--<input type="file" id="qr_code_background_image" ng-model="qr_code_background_image" ng-change="onChangeFileBgImg()" name="background"/>-->
+                             <div class="btn btn-primary" name="file" ngf-select="uploadBgImg($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" >Seleccione una imagen...</div>
+                             
+                            </div>
+                            
+                            <br>
+                            <div class="row-spaced-no-border"> 
+                             <label for="qr_code_logo_image" class="inline-label">
+                                 Logo
+                             </label> <i class="tiptop icon-info-sign" tooltip="No cubra más del 30% del código  QR con esta imagen ni ninguno de los cuadrados grandes. ¡ Escanéelo antes de publicarlo!"></i> 
+                             <br/> 
+                             <!--<input type="file" id="qr_code_logo_image" name="logo"/>-->
+                             <div class="btn btn-primary" name="file" ngf-select="uploadLogoImg($file)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB">Seleccione una imagen...</div>
+                            
+                          </div>
+                          <br>
+                          <div class="form-inline row-spaced">
+                            <div class="row-spaced-no-border">
+                               
+                               <label>Nivel corrección de error</label> 
+                               <select class="form-control" id="qr_code_error_correction" ng-model="qrCorrectionLevel">
+                                  <option value="1" selected>L (por defecto)</option>
+                                  <option value="0">M</option>
+                                  <option value="3">Q</option>
+                                  <option value="2">H</option>
+                               </select>
+                               <i class="tiptop icon-info-sign" tooltip="Modifique esto si sabe lo que está haciendo."></i>
+                            </div>
+                         </div>
+                            
+                            
+                            
+                        </div>
+                         
+                       
+                     </fieldset>
+                      <br>
+                     <!-- Actions -->
+                     <fieldset>
+                         
+                          <button type="button" class="btn btn-primary btn-cons"  ng-click="onClickRestoreQr()" tooltip="Con esta acción restaurará su código QR al clasico código QR en blanco y negro.">Restaurar</button>
+
+                          <!-- Indicates a successful or positive action -->
+                          <button type="button" class="btn btn-danger btn-cons"  ng-click="onClickDeleteSelectedObject()" tooltip="Con esta acción eliminará el objeto seleccionado" >
+                               <i class="fa fa-trash"></i>
+                          </button>
+                         
+                     
+                    </fieldset>
+                     
+                  </div>
+          
+                 <div  id="scrolldiv" class="col-md-8 well" > <!-- style="position: absolute; top: 235px; left: 50%; padding:10px; margin-left: -30px; "  -->
+                   
+                   <canvas id="qrcontainer" width="600" height="600" style="bacground-color:grey"></canvas>
+                  
+               </div>
+			  
+              
+            </div>
+         </div>
+	</div>
+</div>
+    

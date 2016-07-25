@@ -1,0 +1,153 @@
+
+<div class="row home-row-top">
+    <div class="col-md-12">
+        <!--Table Wrapper Start-->
+        <div class="table-responsive ls-table">
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Campaña</th>
+                    <th>Descripcion</th>
+                    <th>Progreso</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="campagna in campains">
+                    <td>{{campagna.id}}</td>
+                    <td>{{campagna.name}}</td>
+                    <td>{{campagna.description}}</td>
+                    <td class="ls-table-progress">
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuetransitiongoal="50"></div>
+                        </div>
+                    </td>
+                    <td><span class="label label-warning">Pending</span></td>
+                    <td>
+                        <button ng-click="onAction('edit',campagna.id)" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></button>
+                        <button ng-click="onAction('qr',campagna.id)" class="btn btn-xs btn-info"><i class="fa fa-qrcode"></i></button>
+                        <button ng-click="onAction('download',campagna.id)" class="btn btn-xs btn-info"><i class="fa fa-download"></i></button>
+                        <button ng-click="onAction('config',campagna.id)" class="btn btn-xs ls-light-green-btn"><i class="fa fa-cog"></i></button>
+                        <button ng-click="onAction('editweb',campagna.id)" class="btn btn-xs ls-red-btn"><i class="fa fa-tint"></i></button>
+                    </td>
+                </tr>
+                
+                </tbody>
+
+            </table>
+        </div>
+        <!--Table Wrapper Finish-->
+    </div>
+    <!--Start Notifications--->
+	
+	 <toaster-container toaster-options="{'position-class': 'toast-top-full-width', 'close-button':true}"></toaster-container>
+	<!--End Notifications-->
+     
+     <!-- overlay form campaign -->
+    <div name="overlay" class="dw-loading dw-loading-overlay dw-loading-active" ng-show="optionsFormCampaign.show" >
+            <div class="dw-loading-body" >
+                    <div class="dw-loading-spinner row">
+                            <div class="panel panel-{{optionsFormCampaign.type || 'default'}} " style="width:{{optionsFormCampaign.width || 550}}px">
+                                    <div class="panel-heading" >
+                                            <h4>{{optionsFormUser.title}}</h4>	
+                                    </div>
+                                    <div class="panel-body " >
+                                           <form name="formCampaign" novalidate >
+                                                    <h4>{{optionsFormCampaign.message}}</h4>								
+                                                    <div class="form-group col-md-3">
+                                                            <!--<label for="mobiletrck.id" class="ng-binding" style="align:left">
+                                                                    Nombre  *
+                                                            </label>-->
+                                                            <input type="text" class="form-control" id="mobiletrck.id" name="mobiletrck.id"ng-model="campaign.id" placeholder="id"  ng-required="true" ng-disabled="false">	   
+                                                    </div>
+                                                    
+                                                    <div class="form-group col-md-6">
+                                                           <!-- <label for="mobiletrck.name" class="ng-binding" style="align:left">
+                                                                    Nombre  *
+                                                            </label>-->
+                                                            <input type="text" class="form-control" id="mobiletrck.name" name="mobiletrck.name"ng-model="campaign.name" placeholder="Nombre"  ng-required="true" ng-disabled="false">	   
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                           <!-- <label for="mobiletrck.name" class="ng-binding" style="align:left">
+                                                                    Nombre  *
+                                                            </label>-->
+                                                            <input type="text" class="form-control" id="mobiletrck.description" name="mobiletrck.description"ng-model="campaign.description" placeholder="Descripcion"  ng-required="false" ng-disabled="false">	   
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <img src="/qr-png/{{campaign.id}} alt="QR code" height="100" width="100">
+                                                             
+                                        
+                                                    </div>
+                                                    
+                                            </form>
+                          <!---------------------------------->                  
+                                            
+   <!--                                       <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="r" method="post" accept-charset="utf-8" class="form" role="form">   <legend>Sign Up</legend>
+                    <h4>It's free and always will be.</h4>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-6">
+                            <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />                        </div>
+                        <div class="col-xs-6 col-md-6">
+                            <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  />                        </div>
+                    </div>
+                    <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  /><input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /><input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />                    <label>Birth Date</label>                    <div class="row">
+                        <div class="col-xs-4 col-md-4">
+                            <select name="month" class = "form-control input-lg">
+<option value="01">Jan</option>
+
+</select>                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <select name="day" class = "form-control input-lg">
+
+<option value="30">30</option>
+<option value="31">31</option>
+</select>                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <select name="year" class = "form-control input-lg">
+
+<option value="2010">2010</option>
+<option value="2011">2011</option>
+<option value="2012">2012</option>
+<option value="2013">2013</option>
+</select>                        </div>
+                    </div>
+                     <label>Gender : </label>                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="M" id=male />                        Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="F" id=female />                        Female
+                    </label>
+                    <br />
+              <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span>
+                    <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
+                        Create my account</button>
+            </form>          
+          </div>
+</div>            
+</div>  -->
+                         <!----------------------------------->                   
+                                    </div>
+                                    <div class="panel-footer" >
+                                           <div class="row">
+                                                    <div class="col-md-offset-3 col-md-9">  
+                                                            <button ng-click="optionsFormCampaign.continue()" ng-disabled="formCampaign.$invalid"  class="btn btn-sm btn-primary" >Aceptar</button> 
+                                                            <button ng-click="optionsFormCampaign.show=false" class="btn btn-sm">Cancelar</button> 
+                                                    </div> 
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+            </div>
+    </div> 
+     
+    
+    <!-- overlay end  --->
+</div>
+  
+	
+	
+

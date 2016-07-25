@@ -1,0 +1,94 @@
+<div class="row home-row-top">
+  <div class="col-md-12">  
+    <div class="row">
+        <div class="form-group col-md-2">
+                <input type="text" class="form-control" id="mobiletrck.id" name="mobiletrck.id"ng-model="campaign.id" placeholder="id"  ng-required="false" ng-disabled="true">	   
+        </div>
+        
+        <div class="form-group col-md-10">
+                <input type="text" class="form-control" id="mobiletrck.name" name="mobiletrck.name"ng-model="campaign.name" placeholder="Nombre"  ng-required="true" ng-disabled="false">	   
+        </div>
+        <div class="form-group col-md-12">
+                <input type="text" class="form-control" id="mobiletrck.description" name="mobiletrck.description"ng-model="campaign.description" placeholder="Descripcion"  ng-required="false" ng-disabled="false">	   
+        </div>
+        <div class="form-group col-md-12">
+            <img src="/qr-png/{{campaign.id}}" alt="QR code" height="250" width="250">
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-md-2">
+            <button ng-click="save()" ng-disabled=""  class="btn btn-sm btn-primary" >Aceptar</button> 
+                                           
+        </div>
+        <div class="col-md-2">
+            <button ng-click="delete()" ng-disabled=""  class="btn btn-sm btn-danger" >Eliminar</button> 
+        </div>
+        <div class="col-md-2">
+             <button ng-click="cancel()" class="btn btn-sm  btn-secondary">Cancelar</button> 
+        </div>
+    </div>
+    <!--Start Notifications--->
+	
+	 <toaster-container toaster-options="{'position-class': 'toast-top-full-width', 'close-button':true}"></toaster-container>
+	<!--End Notifications-->
+     
+     <!-- overlay form campaign -->
+    <div name="overlay" class="dw-loading dw-loading-overlay dw-loading-active" ng-show="optionsFormCampaign.show" >
+            <div class="dw-loading-body" >
+                    <div class="dw-loading-spinner row">
+                            <div class="panel panel-{{optionsFormCampaign.type || 'default'}} " style="width:{{optionsFormCampaign.width || 550}}px">
+                                    <div class="panel-heading" >
+                                            <h4>{{optionsFormUser.title}}</h4>	
+                                    </div>
+                                    <div class="panel-body " >
+                                           <form name="formCampaign" novalidate >
+                                                    <h4>{{optionsFormCampaign.message}}</h4>								
+                                                    <div class="form-group col-md-3">
+                                                            <!--<label for="mobiletrck.id" class="ng-binding" style="align:left">
+                                                                    Nombre  *
+                                                            </label>-->
+                                                            <input type="text" class="form-control" id="mobiletrck.id" name="mobiletrck.id"ng-model="campaign.id" placeholder="id"  ng-required="false" ng-disabled="false">	   
+                                                    </div>
+                                                    
+                                                    <div class="form-group col-md-6">
+                                                           <!-- <label for="mobiletrck.name" class="ng-binding" style="align:left">
+                                                                    Nombre  *
+                                                            </label>-->
+                                                            <input type="text" class="form-control" id="mobiletrck.name" name="mobiletrck.name"ng-model="campaign.name" placeholder="Nombre"  ng-required="true" ng-disabled="false">	   
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                           <!-- <label for="mobiletrck.name" class="ng-binding" style="align:left">
+                                                                    Nombre  *
+                                                            </label>-->
+                                                            <input type="text" class="form-control" id="mobiletrck.description" name="mobiletrck.description"ng-model="campaign.description" placeholder="Descripcion"  ng-required="false" ng-disabled="false">	   
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div>img src: /qr-png/{{campaign.id}} </div>
+                                                        <img src="/qr-png/{{campaign.id}}" alt="QR code" height="100" width="100">
+                                                             
+                                        
+                                                    </div>
+                                                    
+                                            </form>
+                              
+                                    </div>
+                                    <div class="panel-footer" >
+                                           <div class="row">
+                                                    <div class="col-md-offset-3 col-md-9">  
+                                                            <button ng-click="optionsFormCampaign.continue()" ng-disabled="formCampaign.$invalid"  class="btn btn-sm btn-primary" >Aceptar</button> 
+                                                            <button ng-click="optionsFormCampaign.show=false" class="btn btn-sm">Cancelar</button> 
+                                                    </div> 
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+            </div>
+    </div> 
+    <!-- overlay end  --->
+        
+  </div>
+</div>
+  
+	
+	
+

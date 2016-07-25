@@ -1,0 +1,55 @@
+area----------------------------------:CCNN
+create alumno: 001CCNN0101
+create alumno: 001CCNN0102
+create alumno: 001CCNN0201
+create alumno: 001CCNN0202
+create alumno: 001CCNN0301
+create alumno: 001CCNN0302
+create alumno: 001CCNN0401
+create alumno: 001CCNN0402
+create alumno: 001CCNN0501
+create alumno: 001CCNN0502
+create alumno: 001CCNN0601
+create alumno: 001CCNN0602
+area----------------------------------:CCSS
+create alumno: 001CCSS0101
+create alumno: 001CCSS0102
+create alumno: 001CCSS0201
+create alumno: 001CCSS0202
+create alumno: 001CCSS0301
+create alumno: 001CCSS0302
+create alumno: 001CCSS0401
+create alumno: 001CCSS0402
+create alumno: 001CCSS0501
+create alumno: 001CCSS0502
+create alumno: 001CCSS0601
+create alumno: 001CCSS0602
+area----------------------------------:LCL
+create alumno: 001LCL0101
+create alumno: 001LCL0102
+create alumno: 001LCL0201
+create alumno: 001LCL0202
+create alumno: 001LCL0301
+create alumno: 001LCL0302
+create alumno: 001LCL0401
+create alumno: 001LCL0402
+create alumno: 001LCL0501
+create alumno: 001LCL0502
+create alumno: 001LCL0601
+create alumno: 001LCL0602
+area----------------------------------:MAT
+create alumno: 001MAT0101
+create alumno: 001MAT0102
+create alumno: 001MAT0201
+create alumno: 001MAT0202
+create alumno: 001MAT0301
+create alumno: 001MAT0302
+create alumno: 001MAT0401
+create alumno: 001MAT0402
+create alumno: 001MAT0501
+create alumno: 001MAT0502
+create alumno: 001MAT0601
+create alumno: 001MAT0602
+
+
+

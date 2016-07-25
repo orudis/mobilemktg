@@ -1,0 +1,119 @@
+<!-- menú -->
+<div ng-include src="'app/layout/navbar/navbar.tpl.html'"></div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert alert-info"  style="text-align:center"> <h1><strong>Campaña:</strong>  {{campaign.name}}</h1></div>
+    </div>
+</div>
+
+<!-- table mobile pages   -->
+<!--Table Wrapper Start-->
+        <div class="table-responsive ls-table">
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th width="15%">Acciones</th>
+                    <th width="5%">Id</th>
+                    <th width="25%">Nombre</th>
+                    <th width="50%">Descripcion</th>
+                </tr>
+                </thead>
+                <h1>editin:{{editing}}</h1>
+                <tbody>
+                    <tr ng-repeat="mobilePage in mobilePages">
+                        <td>
+                            <button ng-hide="mobilePage.editing" ng-click="onAction('edit',mobilePage.id)" class="btn btn-xs btn-info" style="margin:3px" tooltip="Editar">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button ng-show="mobilePage.editing" ng-click="onAction('save',mobilePage.id)" class="btn btn-xs btn-warning" style="margin:3px" tooltip="Guardar">
+                                <i class="fa fa-floppy-o"></i>
+                            </button>
+                            <button ng-show="mobilePage.editing" ng-click="mobilePage.editing=false" class="btn btn-xs btn-default" style="margin:3px" tooltip="Cancelar">
+                                <i class="fa fa-ban"></i>
+                            </button>
+                           
+                            <button ng-hide="mobilePage.editing" ng-click="onAction('probe',mobilePage.id)"  class="btn btn-xs btn-info" style="margin:3px" tooltip="Probar">
+                                <i class="fa fa-globe"></i>
+                            </button>
+                            <button ng-show="mobilePage.id_page" ng-click="onAction('delete',mobilePage.id)" class="btn btn-xs ls-red-btn" style="margin:3px" tooltip="Eliminar campaña">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <span >{{mobilePage.id}}</span> 
+                            
+                        </td>
+                        <td>
+                            <span ng-hide="mobilePage.editing">{{mobilePage.name}}</span> 
+                            <span ng-show="mobilePage.editing">
+                                <input type="text" ng-model="mobilePage.name"/>
+                            </span>
+                        </td>
+                        <td><span ng-hide="mobilePage.editing">{{mobilePage.description}}</span> 
+                            <span ng-show="mobilePage.editing">
+                                <input type="text" ng-model="mobilePage.description"/>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr ng-show="!adding">
+                        <td colspan="4"> 
+                            <div  ng-click="onAction('new')" class="btn btn-primary"><i class="fa fa-plus">  Añadir página</i></div>
+                        </td>
+                    </tr>
+              </tbody>
+            </table>
+        </div>
+        <!--Table Wrapper Finish-->
+
+<!--  edit html  -->
+<div class="container" id="editweb" ng-show="mobilePage.editing">
+    <div class="row">
+       <!-- <div class="btn" ng-class="{'btn-warning':pageDirty==true, 'btn-primary':pageDirty==false}" ng-click="onSave()"><i class="fa fa-save"></i></div>-->
+        
+        <div class="col-md-12" style="border:1px solid">
+            <style>
+                .medium-insert-images figure figcaption,
+                .mediumInsert figure figcaption,
+                .medium-insert-embeds figure figcaption,
+                .mediumInsert-embeds figure figcaption {
+                    font-size: 12px;
+                    line-height: 1.2em;
+                }
+                .medium-insert-images-slideshow figure {
+                    width: 100%;
+                }
+                .medium-insert-images-slideshow figure img {
+                    margin: 0;
+                }
+                .medium-insert-images.medium-insert-images-grid.small-grid figure {
+                    width: 12.5%;
+                }
+                @media (max-width: 750px) {
+                    .medium-insert-images.medium-insert-images-grid.small-grid figure {
+                        width: 25%;
+                    }
+                }
+                @media (max-width: 450px) {
+                    .medium-insert-images.medium-insert-images-grid.small-grid figure {
+                        width: 50%;
+                    }
+                }
+            </style>
+            
+            <div class="row">
+                <div class="editable"  data-placeholder="Aquí su texto y sus imágenes">
+                </div>
+            </div>
+            
+         
+         <!-- <div name="text" ng-model="text" required medium-editor bind-options="{'placeholder': {text: 'This is a placeholder'},
+                    'buttons': ['bold', 'italic', 'underline', 'header1', 'header2', 'quote', 'orderedlist', 'unorderedlist']}">
+          </div>
+         -->
+         <!--<div name="text" ng-model="texto" required medium-editor bind-options="options" >
+          </div>
+        -->
+	</div>	
+    </div>
+</div>
+    

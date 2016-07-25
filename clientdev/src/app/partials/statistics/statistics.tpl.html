@@ -1,0 +1,264 @@
+<div ng-include src="'app/layout/navbar/navbar.tpl.html'"></div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert alert-info" style="text-align:center"> <strong>Campaña:</strong>  {{campaign.name}}</div>
+    </div>
+</div>
+
+
+<!-- Init global stadistic -->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Resultados globales
+    </div>
+    <div class="panel-body"  style="padding:10px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="offer offer-default">
+                    <div class="shape">
+                        <div class="shape-text">
+
+                        </div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>
+                            <strong>Visitas totales</strong>
+                        </h3>
+                        
+                        <h2><strong>9</strong></h2>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="offer offer-success">
+                    <div class="shape">
+                        <div class="shape-text">
+
+                        </div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>
+                            <strong>Total páginas vistas</strong>
+                        </h3>
+                        
+                        <h2><strong>934</strong></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="offer offer-radiusxx offer-primary">
+                    <div class="shape">
+                        <div class="shape-text">
+
+                        </div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>
+                            <strong>Porcentaje nuevas visitas</strong>
+                        </h3>
+                        
+                        <h2><strong>47%</strong></h2>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<!-- End global stadistic -->
+
+<!-- Init filters -->
+<div class="panel panel-yellow">
+    <div class="panel-heading panel-title">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                Fecha desde
+                <input type="date" class="form-control" ng-model="fechaDesde" ng-change="onChangeFechaDesde()" />
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                Fecha hasta
+                <input type="date" class="form-control" ng-model="fechaHasta" ng-change="onChangeFechaHasta()" />
+            </div>
+            
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <span>&nbsp;</span>
+                <button class="btn btn-primary btn-block" ng-click="onClickFilter()">
+                    Consultar
+                </button>
+            </div>
+        </div>						
+    </div>
+</div>
+<!-- End filters -->
+
+<!-- Init Sumary -->
+<div class="panel panel-info">
+    <div class="panel-heading panel-title">
+        <i class="fa fa-signal"></i>   Sumario <span ng-show="showLabelFilterDates" >( Resultados desde {{fechaDesde}} hasta {{fechaHasta}})</span>
+    </div>
+    <div class="panel-body" style="padding:20px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+               <button type="button" class="btn btn-default"><i class="fa fa-user"></i>  Usuarios <span class="badge"><strong>23456</strong></span></button>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <button type="button" class="btn btn-success"><i class="fa fa-list-alt"></i>  Páginas vista <span class="badge"><strong>23456</strong></span></button>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+               <button type="button" class="btn btn-primary"><i class="fa fa-arrow-right"></i>  Nuevas visitas <span class="badge"><strong>40%</strong></span></button>
+            </div>
+        </div>						
+    </div>
+</div>
+<!-- End sumary -->
+
+<!-- Init Daily Analitics -->
+<div class="panel panel-info">
+    <div class="panel-heading panel-title">
+        <i class="fa fa-signal"></i>   Análisis diario <span ng-show="showLabelFilterDates" >( Resultados desde {{fechaDesde}} hasta {{fechaHasta}})</span>
+    </div>
+    <div class="panel-body" style="padding:20px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <!-- chart lines -->  
+                <div>
+                   <nvd3 options="optionsAD" data="dataAD"></nvd3>
+                </div>
+            </div>
+            
+        </div>						
+    </div>
+</div>
+<!-- End Daily Analitics -->
+
+<!-- Init Countries -->
+<div class="panel panel-info">
+    <div class="panel-heading panel-title">
+        <i class="fa fa-signal"></i>   Paises <span ng-show="showLabelFilterDates" >( Resultados desde {{fechaDesde}} hasta {{fechaHasta}})</span>
+    </div>
+    <div class="panel-body" style="padding:20px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+               <!-- map chart -->  
+                <globe data="data"></globe>
+            </div>
+            
+        </div>						
+    </div>
+</div>
+<!-- End countries -->
+
+
+
+
+<!-- Init Cities -->
+<div class="panel panel-info">
+    <div class="panel-heading panel-title">
+        <i class="fa fa-signal"></i>   Ciudades <span ng-show="showLabelFilterDates" >( Resultados desde {{fechaDesde}} hasta {{fechaHasta}})</span>
+    </div>
+    <div class="panel-body" style="padding:20px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <!-- table -->  
+                 <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                      <tr>
+                        <th width="30%">País</th>
+                        <th width="30%">Ciudad</th>
+                        <th width="10%">Visitas</th>
+                        <th width="15%">Páginas vistas</th>
+                        <th width="15%">Porcentaje nuevas visitas</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>España</td>
+                        <td>Murcia</td>
+                        <td>44567</td>
+                        <td>46567</td>
+                        <td>35%</td>
+                        
+                      </tr>
+                      <tr>
+                        <td>España</td>
+                        <td>Almería</td>
+                        <td>34567</td>
+                        <td>40567</td>
+                        <td>45%</td>
+                      </tr>
+                      <tr>
+                        <td>España</td>
+                        <td>Alicante</td>
+                        <td>11567</td>
+                        <td>445667</td>
+                        <td>55%</td>
+                      
+                    </tbody>
+                  </table> 
+            </div>
+            
+        </div>						
+    </div>
+</div>
+<!-- End Cities -->
+
+<!-- Init Operating Systems -->
+<div class="panel panel-info">
+    <div class="panel-heading panel-title">
+        <i class="fa fa-signal"></i>   Sistemas operativos <span ng-show="showLabelFilterDates" >( Resultados desde {{fechaDesde}} hasta {{fechaHasta}})</span>
+    </div>
+    <div class="panel-body" style="padding:20px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <!-- pie chart -->  
+                <div>
+                   <nvd3 options='optionsSO' data='dataSO'></nvd3>
+                </div>
+            </div>
+            
+        </div>						
+    </div>
+</div>
+<!-- End  Operating Systems -->
+
+<!-- Init Browsers -->
+<div class="panel panel-info">
+    <div class="panel-heading panel-title">
+         <i class="fa fa-signal"></i>   Navegadores <span ng-show="showLabelFilterDates" >( Resultados desde {{fechaDesde}} hasta {{fechaHasta}})</span>
+    </div>
+    <div class="panel-body" style="padding:20px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <!-- pie chart -->  
+                <div>
+                   <nvd3 options='optionsBR' data='dataBR'></nvd3>
+                </div>
+            </div>
+            
+        </div>						
+    </div>
+</div>
+<!-- End  Browsers -->
+
+<!-- Init Mobile devices -->
+<div class="panel panel-info">
+    <div class="panel-heading panel-title">
+        <i class="fa fa-signal"></i>   Dispositivos móviles <span ng-show="showLabelFilterDates" >( Resultados desde {{fechaDesde}} hasta {{fechaHasta}})</span>
+    </div>
+    <div class="panel-body" style="padding:20px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <!-- pie chart -->  
+               <div>
+                   <nvd3 options='optionsMD' data='dataMD'></nvd3>
+                </div> 
+            </div>
+            
+        </div>						
+    </div>
+</div>
+<!-- End  Mobile Devices -->
+
+
+

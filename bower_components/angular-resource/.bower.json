@@ -1,0 +1,18 @@
+{
+  "name": "angular-resource",
+  "version": "1.2.22",
+  "main": "./angular-resource.js",
+  "dependencies": {
+    "angular": "1.2.22-build.361+sha.bcfa64e"
+  },
+  "homepage": "https://github.com/educarm/angular-resource",
+  "_release": "1.2.22",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.22",
+    "commit": "75f19a0087e804012b7bb6ee493bcb69b51829a1"
+  },
+  "_source": "git://github.com/educarm/angular-resource.git",
+  "_target": "v1.2.22",
+  "_originalSource": "educarm/angular-resource"
+}

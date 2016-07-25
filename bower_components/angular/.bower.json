@@ -1,0 +1,16 @@
+{
+  "name": "angular",
+  "version": "1.2.17",
+  "main": "./angular.js",
+  "dependencies": {},
+  "homepage": "https://github.com/educarm/angular",
+  "_release": "1.2.17",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.17",
+    "commit": "84694c4ca0a49aa4e5c9bc932864c19df5872d9b"
+  },
+  "_source": "git://github.com/educarm/angular.git",
+  "_target": "~1.x",
+  "_originalSource": "angular"
+}

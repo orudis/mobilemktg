@@ -1,0 +1,35 @@
+{
+  "name": "lodash",
+  "version": "3.0.0-pre",
+  "main": "./lodash.js",
+  "ignore": [
+    ".*",
+    "*.custom.*",
+    "*.template.*",
+    "*.log",
+    "*.map",
+    "*.md",
+    "/*.min.*",
+    "/lodash.js",
+    "index.js",
+    "component.json",
+    "package.json",
+    "coverage",
+    "doc",
+    "modularize",
+    "node_modules",
+    "perf",
+    "test",
+    "vendor"
+  ],
+  "homepage": "https://github.com/educarm/lodash",
+  "_release": "3.0.0-pre",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.0.0-pre",
+    "commit": "3350c0e45a7002399ad38ecf7230b174880af3a5"
+  },
+  "_source": "git://github.com/educarm/lodash.git",
+  "_target": "v3.0.0-pre",
+  "_originalSource": "educarm/lodash"
+}

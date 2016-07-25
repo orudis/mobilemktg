@@ -1,0 +1,26 @@
+<!--<div ng-show="!(adding || editing)" class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-primary btn-circle btn-lg"  ng-click="onAction('home')" ><i tooltip="Campañas" class="fa fa-home"></i></button>
+        <button type="button" class="btn btn-primary btn-circle btn-lg"  ng-click="onAction('users')" ><i tooltip="Usuarios" class="fa fa-users"></i></button>
+        <button type="button" class="btn btn-primary btn-circle btn-lg" ng-click="onAction('page')"><i class="fa fa-copy"></i></button>
+        <button type="button" class="btn btn-success btn-circle btn-lg"><i class="glyphicon glyphicon-link"></i></button>
+        <button type="button" class="btn btn-info btn-circle btn-lg"><i class="glyphicon glyphicon-ok"></i></button>
+        <button type="button" class="btn btn-warning btn-circle btn-lg"><i class="glyphicon glyphicon-remove"></i></button>
+        <button type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-heart"></i></button>
+    </div>
+</div>-->
+
+<div class="container" style="padding-top: 0px;">
+    <ul class="nav nav-justified">
+        <li disabled><a class="text-center" ng-show="navbar.home.show"  ng-click="onAction('home')" ><i class="fa fa-mobile fa-3x" ng-class="{'text-success':navbar.home.active}"></i> <br>Campañas Marketing Móvil</a>
+        </li>
+        <li><a  ng-disabled="true" class="text-center" ng-show="navbar.qr.show" ng-click="onAction('qr')" ><i class="fa fa-qrcode fa-3x" ng-class="{'text-success':navbar.qr.active}"></i> <br>Editor QR</a>
+        </li>
+        <li ><a ng-disabled="false" class="text-center" ng-show="navbar.editweb.show" ng-click="onAction('editweb')" ><i class="fa fa-globe fa-3x" ng-class="{'text-success':navbar.editweb.active}"></i> <br>Editor Páginas Web</a>
+        </li>
+        <li><a class="text-center" ng-show="navbar.statistics.show" ng-click="onAction('statistics')" ><i class="fa fa-signal fa-3x" ng-class="{'text-success':navbar.statistics.active}"></i> <br>Estadísticas</a>
+        </li>
+		 <li><a class="text-center" ng-show="navbar.users.show" ng-click="onAction('users')" ><i class="fa fa-users fa-3x" ng-class="{'text-success':navbar.users.active}"></i> <br>Usuarios</a>
+        </li>
+    </ul>
+</div>

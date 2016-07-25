@@ -1,0 +1,45 @@
+{
+  "name": "edu-crud",
+  "version": "0.0.1",
+  "authors": [
+    "educarm"
+  ],
+  "main": [
+    "dist/edu-crud.js",
+    "dist/edu-crud.css"
+  ],
+  "description": "edu-crud es un grid de datos que realiza las operaciones CRUD a través de un API RESTful",
+  "keywords": [
+    "AngularJs",
+    "form",
+    "grid",
+    "json",
+    "html"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "edu-field": "educarm/edu-field#~0.x",
+    "edu-form": "educarm/edu-form#~0.x",
+    "edu-grid": "educarm/edu-grid#~0.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "educarm/angular-mocks#~1.x"
+  },
+  "homepage": "https://github.com/educarm/edu-crud",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.1",
+    "commit": "bc44d702265004db67d8e45c4a175567b1a3bce9"
+  },
+  "_source": "git://github.com/educarm/edu-crud.git",
+  "_target": "v0.0.1",
+  "_originalSource": "educarm/edu-crud"
+}

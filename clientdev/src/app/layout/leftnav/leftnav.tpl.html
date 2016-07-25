@@ -1,0 +1,49 @@
+<section id="left-navigation">
+<!--Left navigation user details start-->
+
+	<!--Phone Navigation Menu icon start-->
+	<div class="phone-nav-box visible-xs">
+		<!--
+		<a class="phone-logo" href="index.html" title="">
+			<h1>@Nota</h1>
+		</a>
+		-->
+		<a class="phone-nav-control" href="javascript:void(0)">
+			<span class="fa fa-bars"></span>
+		</a>
+		<div class="clearfix"></div>
+	</div>
+	<!--Phone Navigation Menu icon start-->
+
+	<!--Left navigation start-->
+	<ul ng-show="autorizaciones"  class="mainNav"  >
+		<li  ng-repeat="item in appConfig.menuLeft" ng-class="{'active':$first}">
+			<a  ng-class="{'active':$first}" href="#{{item.url}}">
+				<i class="fa fa-2x fa-{{item.icono}}"></i>   <span>{{item.nombre}}</span>
+			</a>
+			<ul ng-if="item.submenu.length>0">
+				<li ng-repeat="subitem in item.submenu"><a href="" ng-click="onClickNavigation(subitem)" ><i class="fa fa-{{subitem.icono}}" ng-class="{'item-disabled':disabledItem(subitem)}"></i><span ng-class="{'item-disabled':disabledItem(subitem)}">{{subitem.nombre}}</span></a></li>
+			</ul>
+		</li>
+	</ul>
+	
+	<!--     -->
+	<div  ng-show="false"  class="button-save"  ng-repeat="item in appConfig.menuLeft2" >
+		<a href="javascript:void(0)"  ng-click="onClickNavigation(item)"  class="btn " >
+			<i class="fa  fa-{{item.icono}}"></i>
+		</a>
+	</div>
+	<!--   --->
+	
+	
+	<div class="button-save" >
+		<a href="" ng-click="updateData()" class="btn" ng-class="{'btn-warning':formDirty}">
+			<div style="width:20px;height:20px">
+				<span><i class="fa fa-save" ></i></span>
+			</div>
+		</a>
+	</div>
+	
+
+	<!--Left navigation end-->
+</section>	

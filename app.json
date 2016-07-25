@@ -1,0 +1,8 @@
+{
+  "name": "Node.js Mobile Tracking”,
+  "description": “Platform for tracking mobile marketing”,
+  "repository": "https://github.com/juanguir/mobiletracking”,
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", “restify”, “angularjs”],
+  "image": "heroku/nodejs"
+}
