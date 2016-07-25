@@ -1,6 +1,6 @@
 //Heroku dynamically assigns your app a port, so you can't set the port to a fixed number. 
 //Heroku adds the port to the env, so we can pull it from there
-var port     = process.env.PORT || 80;
+var port     = process.env.PORT || 3000;
 // set up ======================================================================
 // get all requires
 var express  = require('express');
